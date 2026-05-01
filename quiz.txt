@@ -1,0 +1,218 @@
+Step 1: Login to AWS Console
+Open browser
+Go to AWS Console
+Enter username & password
+Login successfully
+
+👉 After login, you reach AWS Dashboard.
+
+🔹 Step 2: Open Amazon Lex Service
+In search bar → type Amazon Lex
+Click on Lex service
+Click Create Bot
+
+👉 This service is used to build chatbots.
+
+🔹 Step 3: Create a New Bot
+Select:
+✔️ Create a blank bot
+Enter details:
+Bot Name: QuizBot
+Description: Quiz system chatbot
+IAM Role:
+Select Create new role
+
+👉 This role gives permission to Lex to work.
+
+Language:
+Select English
+Voice (optional):
+Choose any voice (if needed)
+Click Done
+
+✅ Bot is created successfully
+
+🔹 Step 4: Create Intent (Main Logic of Quiz)
+
+👉 Intent = What user wants to do
+
+Go to Intents section
+Click Create Intent
+Enter:
+Intent Name: QuizIntent
+Click Create
+
+✅ Intent created
+
+🔹 Step 5: Add Sample Utterances
+
+👉 Utterances = Different ways user starts quiz
+
+Add multiple sentences:
+
+Start quiz
+Begin quiz
+I want quiz
+Take a test
+Quiz please
+
+👉 Click Save
+
+✅ Helps bot understand user input correctly
+
+🔹 Step 6: Create Slots (Quiz Questions)
+
+👉 Slots = Inputs from user (answers)
+
+🟢 Slot 1: Question 1
+Click Add Slot
+Enter:
+Slot Name: q1
+Slot Type: AMAZON.Number
+Prompt:
+👉 What is 2 + 2 ?
+Mark:
+✔️ Required
+Click Save
+🟢 Slot 2: Question 2
+Click Add Slot
+Enter:
+Slot Name: q2
+Slot Type: AMAZON.City
+Prompt:
+👉 What is the capital of India?
+Mark Required
+Save
+🟢 Slot 3: Question 3
+Click Add Slot
+Enter:
+Slot Name: q3
+Slot Type: AMAZON.AlphaNumeric / Custom
+Prompt:
+👉 Which language is used for AI?
+Mark Required
+Save
+
+✅ Now bot will ask questions one by one
+
+🔹 Step 7: Add Retry Prompts (Important)
+
+👉 If user gives wrong input
+
+Example:
+
+“Please enter a valid answer”
+
+Steps:
+
+Go to slot
+Add retry prompt
+Save
+🔹 Step 8: Add Conditional Logic (Answer Validation)
+
+👉 Very important for quiz system
+
+Go to:
+Intent → Slots
+Scroll to Advanced options
+Click Conditional branching
+Example for Question 1:
+
+Condition:
+
+If {q1} = 4
+
+Response:
+✔️ Correct Answer
+
+Else:
+❌ Wrong Answer
+
+Example for Question 2:
+
+Condition:
+
+If {q2} = Delhi
+Example for Question 3:
+
+Condition:
+
+If {q3} = Python
+
+✅ This checks answers automatically
+
+🔹 Step 9: Create Custom Slot Type (Optional but Important)
+
+👉 For fixed answers like MCQs
+
+Go to Slot Types
+Click Create Slot Type
+Enter:
+Name: QuizOptions
+Add values:
+Python
+Java
+C++
+Click Save
+
+👉 Now assign this slot type to questions
+
+🔹 Step 10: Add Response Cards (MCQ Buttons)
+
+👉 Makes quiz interactive
+
+Go to slot prompt
+Click Add Card Group
+Add:
+Title: Choose Answer
+Add buttons:
+A → 2
+B → 4
+C → 6
+
+✅ User can click instead of typing
+
+🔹 Step 11: Configure Bot Responses
+Initial Response:
+
+👉 “Welcome to Quiz System. Let’s start!”
+
+Confirmation Response:
+
+👉 “Do you want to submit your quiz?”
+
+Final Response:
+
+👉 “Quiz completed successfully!”
+
+🔹 Step 12: Build the Bot
+Click Build
+Wait for build process
+
+✅ Bot becomes active
+
+🔹 Step 13: Test the Quiz System
+Open Test Panel
+Sample Interaction:
+
+User: Start quiz
+Bot: What is 2+2?
+User: 4
+Bot: Correct
+
+Bot: Capital of India?
+User: Delhi
+Bot: Correct
+
+Bot: Which language is used for AI?
+User: Python
+Bot: Correct
+
+Bot: Quiz completed
+
+🔹 Step 14: Verify Output
+
+✔️ Questions displayed
+✔️ Answers captured
+✔️ Validation working
+✔️ Final response shown
